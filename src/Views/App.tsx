@@ -1,25 +1,24 @@
 import React from 'react'
-import {BrowserRouter as Router, useRoutes} from "react-router-dom"
 import '../App.css'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import {AppNavbar} from "./Shared/Navbar/AppNavbar";
 import {AppRoutes} from "../Config/Router/Routes";
+import {BrowserRouter as Router} from "react-router-dom"
 
 export const App: React.FC = () => {
-
     return (
-        <Container fluid={true}>
-            <Router>
+        <Router>
+            <Container fluid={true} className={"px-0"}>
                 <AppNavbar/>
                 <Row className={"container-row"}>
                     <div className={"py-4 px-4"}>
                         <AppRoutes/>
                     </div>
                 </Row>
-            </Router>
-        </Container>
+            </Container>
+        </Router>
     );
 
 }

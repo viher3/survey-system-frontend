@@ -10,7 +10,7 @@ export const AppNavbar: React.FC = () => {
 
     return (
         <>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="dark" expand="lg">
                 <Container className={"mx-0"}>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">

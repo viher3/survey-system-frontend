@@ -5,7 +5,7 @@ import React from "react";
 
 export const ROUTE_PATHS = {
     DASHBOARD : "/",
-    SURVEY_LIST: "/surveys"
+    SURVEY_LIST: "/surveys",
 }
 
 export const AppRoutes = () => {
