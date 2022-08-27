@@ -1,25 +1,15 @@
 import React from 'react'
 import {BrowserRouter as Router, useRoutes} from "react-router-dom"
-import {SurveyListView} from "./Survey/List/SurveyListView";
 import '../App.css'
 
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import {AppNavbar} from "./Shared/AppNavbar";
-import {Dashboard} from "./Dashboard/Dashboard";
+import {AppNavbar} from "./Shared/Navbar/AppNavbar";
+import {AppRoutes} from "../Config/Router/Routes";
 
 export const App: React.FC = () => {
 
-    const AppRoutes = () => {
-        return useRoutes([
-            {path: "/", element: <Dashboard/>},
-            {path: "/surveys", element: <SurveyListView/>},
-            // ...
-        ])
-    };
-
     return (
-
         <Container fluid={true}>
             <Router>
                 <AppNavbar/>

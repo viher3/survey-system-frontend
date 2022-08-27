@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import {useNavigate} from "react-router-dom"
+import {ROUTE_PATHS} from "../../../Config/Router/Routes";
 
 export const AppNavbar: React.FC = () => {
 
@@ -14,8 +15,8 @@ export const AppNavbar: React.FC = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
-                            <Nav.Link onClick={() => navigate('/surveys')}>Surveys</Nav.Link>
+                            <Nav.Link onClick={() => navigate(ROUTE_PATHS.DASHBOARD)}>Home</Nav.Link>
+                            <Nav.Link onClick={() => navigate(ROUTE_PATHS.SURVEY_LIST)}>Surveys</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
