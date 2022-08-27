@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 interface Props {
 
@@ -7,7 +7,9 @@ interface Props {
 export const SurveyListView: React.FC<Props> = (props) => {
 
     return (
-        <>SurveyListView</>
+        <>
+            <h2>Suvey list</h2>
+        </>
     )
 
 }
