@@ -10,3 +10,7 @@ nav.bg-dark a:hover
 {
     color:#FFF !important;
 }
+
+table tbody.simpleTable tr:hover{
+    cursor:pointer;
+}

@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import {Spinner, Table} from "react-bootstrap";
+import {Button, Col, Spinner, Table} from "react-bootstrap";
 import {RestSurveyRepository} from "../../../Repositories/Survey/RestSurveyRepository";
 import {Enabled} from "../../../Components/Enabled/Enabled";
-import {TotalRecordsText} from "../../../Components/Table/TotalRecordsText";
+import Row from "react-bootstrap/Row";
+import {SimpleTable} from "../../../Components/Table/SimpleTable";
+import {useNavigate} from "react-router-dom"
+import {ROUTE_PATHS} from "../../../Config/Router/Routes";
 
 interface Props {}
 
@@ -14,6 +17,7 @@ export const SurveyListView: React.FC<Props> = (props) => {
     const [totalRecords, setTotalRecords] = useState<number>(0)
 
     const repository = new RestSurveyRepository()
+    const navigate = useNavigate()
 
     const getSurveys = () => {
         repository
@@ -27,52 +31,50 @@ export const SurveyListView: React.FC<Props> = (props) => {
             .finally(() => setLoading(false))
     }
 
-    useEffect(() => {
-        getSurveys()
-    }, [])
+    const showDetail = (survey: any) => {
+        navigate(ROUTE_PATHS.SURVEY_DETAIL.replace(':id', survey.id))
+    }
+
+    useEffect(() => getSurveys(), [])
 
     return (
         <>
-            <h2>Suvey list</h2>
+            <Row className={"mb-4"}>
+                <Col>
+                    <h2>Suvey list</h2>
+                </Col>
+                <Col className={"d-flex flex-row-reverse"}>
+                    <Button disabled className={"text-uppercase"}>Create</Button>
+                </Col>
+            </Row>
 
-            <Table striped bordered hover>
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Enabled</th>
-                    <th>Created at</th>
-                </tr>
-                </thead>
-                <tbody>
-                {!surveys.length &&
-                    <tr>
-                        <td colSpan={4} className={"text-center my-4 py-4"}>
-                            {loading && <Spinner animation="border"/>}
-                        </td>
-                    </tr>
-                }
-
+            <SimpleTable
+                headers={["Name", "Description", "Enabled", "Created at"]}
+                loading={loading}
+                totalItems={totalItems}
+                totalRecords={totalRecords}
+            >
                 {
                     surveys.map((survey: any, key: number) => {
                         return (
                             <tr key={key}>
-                                <td>{survey.name}</td>
-                                <td>{survey.description}</td>
-                                <td>
+                                <td onClick={() => showDetail(survey)}>
+                                    {survey.name}
+                                </td>
+                                <td onClick={() => showDetail(survey)}>
+                                    {survey.description}
+                                </td>
+                                <td onClick={() => showDetail(survey)}>
                                     <Enabled enabled={survey.enabled} />
                                 </td>
-                                <td>{survey.createdAt}</td>
+                                <td onClick={() => showDetail(survey)}>
+                                    {survey.createdAt}
+                                </td>
                             </tr>
                         );
                     })
                 }
-
-                </tbody>
-            </Table>
-
-            <TotalRecordsText totalItems={totalItems} totalRecords={totalRecords} />
+            </SimpleTable>
         </>
     )
-
 }
