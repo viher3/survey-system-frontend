@@ -10,6 +10,7 @@ import {RestSurveyQuestionRepository} from "../../../Repositories/SurveyQuestion
 import {faPencil, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import Row from "react-bootstrap/Row";
+import {TotalRecordsText} from "../../../Components/Table/TotalRecordsText";
 
 interface Props {
 }
@@ -89,7 +90,10 @@ export const SurveyListDetail: React.FC<Props> = (props) => {
                             <h2>Questions</h2>
                         </Col>
                         <Col className={"d-flex flex-row-reverse"}>
-                            <Button className={"text-uppercase"}>Add question</Button>
+                            <Button
+                                onClick={() => navigate(ROUTE_PATHS.SURVEY_QUESTION_CREATE.replace(':id', survey.id))}
+                                className={"text-uppercase"}
+                            >Add question</Button>
                         </Col>
                     </Row>
 
@@ -129,6 +133,8 @@ export const SurveyListDetail: React.FC<Props> = (props) => {
                         })}
                         </tbody>
                     </Table>
+
+                    <TotalRecordsText totalItems={surveyQuestions?.totalItems} totalRecords={surveyQuestions?.totalRecords} />
 
                 </>
             }
