@@ -1,4 +1,4 @@
-export interface SuveryQuestionOption {
+export interface SurveyQuestionOption {
     type: string,
     values: string[],
     position: number,

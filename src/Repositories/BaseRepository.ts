@@ -46,6 +46,33 @@ export abstract class BaseRepository
     /**
      *
      * @param apiResource
+     * @param params
+     * @param config
+     */
+    async persist(apiResource: string, params: object = {}, config: object = {}): Promise<any> {
+        const url = this.getApiUrl(apiResource)
+        return new Promise<any>((resolve, reject) => {
+            axios.post(url, params, config)
+                .then((response): any => {
+                    const apiResponse: any = response.data
+
+                    if (response.status >= 200 && response.status <= 299) {
+                        resolve(apiResponse)
+                    }
+
+                    if (response.status >= 400) {
+                        reject(apiResponse)
+                    }
+                })
+                .catch(error => {
+                    reject(error.response)
+                })
+        })
+    }
+
+    /**
+     *
+     * @param apiResource
      */
     private getApiUrl = (apiResource : string) : string => process.env.REACT_APP_API_URL + apiResource
 }

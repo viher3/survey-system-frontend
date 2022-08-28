@@ -41,7 +41,7 @@ export const SurveyListView: React.FC<Props> = (props) => {
         <>
             <Row className={"mb-4"}>
                 <Col>
-                    <h2>Suvey list</h2>
+                    <h2>Survey list</h2>
                 </Col>
                 <Col className={"d-flex flex-row-reverse"}>
                     <Button disabled className={"text-uppercase"}>Create</Button>
