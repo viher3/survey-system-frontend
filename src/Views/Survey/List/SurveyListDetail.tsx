@@ -103,6 +103,7 @@ export const SurveyListDetail: React.FC<Props> = (props) => {
                         <thead>
                         <tr>
                             <th>Question</th>
+                            <th>Position</th>
                             <th>Options</th>
                             <th>Enabled</th>
                             <th>Updated at</th>
@@ -114,6 +115,9 @@ export const SurveyListDetail: React.FC<Props> = (props) => {
                             return <tr key={key}>
                                 <td>
                                     {question.question}
+                                </td>
+                                <td>
+                                    {question.position}
                                 </td>
                                 <td>
                                     {Object.keys(question.options).length}
