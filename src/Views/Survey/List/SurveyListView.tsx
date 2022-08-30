@@ -49,7 +49,7 @@ export const SurveyListView: React.FC<Props> = (props) => {
             </Row>
 
             <SimpleTable
-                headers={["Name", "Description", "Enabled", "Created at"]}
+                headers={["Name", "Description", "Enabled", "Total fulfillment", "Created at", ""]}
                 loading={loading}
                 totalItems={totalItems}
                 totalRecords={totalRecords}
@@ -68,7 +68,13 @@ export const SurveyListView: React.FC<Props> = (props) => {
                                     <Enabled enabled={survey.enabled} />
                                 </td>
                                 <td onClick={() => showDetail(survey)}>
+                                    {survey.totalFulfillment}
+                                </td>
+                                <td onClick={() => showDetail(survey)}>
                                     {survey.createdAt}
+                                </td>
+                                <td className={"text-primary text-center"}>
+                                    View replies
                                 </td>
                             </tr>
                         );
